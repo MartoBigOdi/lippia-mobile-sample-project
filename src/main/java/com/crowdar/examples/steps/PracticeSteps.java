@@ -3,6 +3,7 @@ package com.crowdar.examples.steps;
 import com.crowdar.core.PageSteps;
 import com.crowdar.core.actions.MobileActionManager;
 import com.crowdar.examples.constants.LoginConstants;
+import com.crowdar.examples.services.AddTaskService;
 import com.crowdar.examples.services.CheckboxService;
 import com.crowdar.examples.services.LoginService;
 import cucumber.api.java.en.And;
@@ -49,7 +50,7 @@ public class PracticeSteps extends PageSteps {
     }
 
 
-    @And("the user click darkmode")
+    @And("the user clicks darkmode")
     public void theUserClickDarkmode() {
         CheckboxService.clickCheckbox();
     }
@@ -58,5 +59,47 @@ public class PracticeSteps extends PageSteps {
     @Then("verify checkbox status (.*)")
     public void verifyCheckboxStatus(String status) {
         CheckboxService.verifyStateCheckbox(status);
+    }
+
+
+    @When("The user clicks the project")
+    public void theUserClicksTheProject() {
+        AddTaskService.clickProject();
+    }
+
+
+    @And("The user clicks Tasks")
+    public void theUserClicksTasks() {
+        AddTaskService.clickTasks();
+    }
+
+
+    @And("The user clicks add task")
+    public void theUserClicksAddTask() {
+        AddTaskService.clickAddTask();
+    }
+
+
+    @When("The user enters the name of the (.*)$")
+    public void theUserEntersTheNameOfTheNameTask(String nameTask) {
+        AddTaskService.inputNameTask(nameTask);
+    }
+
+
+    @And("The user clicks add")
+    public void theUserClicksAdd() {
+        AddTaskService.clickSaveTask();
+    }
+
+
+    @And("The user clicks save")
+    public void theUserClicksSave() {
+        AddTaskService.clickSaveProject();
+    }
+
+
+    @Then("verify the name (.*)")
+    public void verifyTheNameTaskTask(String task) {
+        AddTaskService.verifyTask(task);
     }
 }
