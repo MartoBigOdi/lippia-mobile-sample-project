@@ -3,7 +3,9 @@ package com.crowdar.examples.steps;
 import com.crowdar.core.PageSteps;
 import com.crowdar.core.actions.MobileActionManager;
 import com.crowdar.examples.constants.LoginConstants;
+import com.crowdar.examples.services.CheckboxService;
 import com.crowdar.examples.services.LoginService;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -12,7 +14,7 @@ import cucumber.api.java.en.When;
  * This class handles the steps in the features files and connects with the service in case of having business logic.
  * Otherwise, if it is a simple action, like clicking a button and it has nothing related to business logic, is correct to put here.
  */
-public class LoginSteps extends PageSteps {
+public class PracticeSteps extends PageSteps {
 
     @Given("The app is loaded correctly")
     @Then("Login page is displayed")
@@ -35,4 +37,26 @@ public class LoginSteps extends PageSteps {
         LoginService.verifyLogIn();
     }
 
+
+    @When("The user clicks menu")
+    public void theUserClicksSettingsMenu() {
+        CheckboxService.clickMenu();
+    }
+
+    @And("The user clicks settings")
+    public void theUserClicksSettings() {
+        CheckboxService.clickSettings();
+    }
+
+
+    @And("the user click darkmode")
+    public void theUserClickDarkmode() {
+        CheckboxService.clickCheckbox();
+    }
+
+
+    @Then("verify checkbox status (.*)")
+    public void verifyCheckboxStatus(String status) {
+        CheckboxService.verifyStateCheckbox(status);
+    }
 }
